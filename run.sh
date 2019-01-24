@@ -7,7 +7,14 @@ fi
 SCRIPTDIR=`/bin/pwd`
 cd $SCRIPTDIR
 
-pip install s3 >/dev/null 2>&1
-pip install yaml >/dev/null 2>&1
+if `which pip3 >/dev/null 2>&1`; then
+  pip3 install boto3 >/dev/null 2>&1
+else
+  pip install boto3 >/dev/null 2>&1
+fi
 
-python retrieve.py
+if `which python3 >/dev/null 2>&1`; then
+  python3 retrieve.py
+else
+  python retrieve.py
+fi
